@@ -22,7 +22,7 @@ export default function Love() {
   function handlePasswordSubmit(e: any) {
     e.preventDefault();
 
-    if (password.trim().toUpperCase() === "JESUS") {
+    if (password.trim().toUpperCase() === "JESUSLOVESYOU7") {
       setShowPasswordPopup(false);
       setShowLovePopup(true);
     } else {
@@ -34,7 +34,7 @@ export default function Love() {
     <>
       {/* PASSWORD POPUP */}
       {showPasswordPopup && (
-        <div class="fixed inset-0 bg-black/60 flex items-center justify-center z-50">
+        <div class="fixed inset-0 bg-black/95 backdrop-blur-2xl flex items-center justify-center z-50">
           <form
             onSubmit={handlePasswordSubmit}
             class="bg-gray-800 p-6 rounded-2xl shadow-xl flex flex-col gap-4 text-white w-72"
@@ -49,7 +49,10 @@ export default function Love() {
               class="p-2 rounded-lg bg-gray-700 outline-none"
             />
 
-            <button type="submit" class="p-2 bg-green-500 rounded-lg font-bold">
+            <button
+              type="submit"
+              class="p-2 bg-green-500 rounded-lg font-bold"
+            >
               Submit
             </button>
           </form>
@@ -58,7 +61,7 @@ export default function Love() {
 
       {/* LOVE POPUP */}
       {showLovePopup && (
-        <div class="fixed inset-0 bg-black/60 flex items-center justify-center z-50 text-white">
+        <div class="fixed inset-0 bg-black/95 backdrop-blur-2xl flex items-center justify-center z-50 text-white">
           <div class="bg-gray-800 p-6 rounded-2xl shadow-xl w-80 flex flex-col gap-6 items-center relative">
             <h2 class="text-xl font-bold text-center">
               Do you love me princess 🥺🥺
@@ -76,7 +79,7 @@ export default function Love() {
                   visibility: yesScale > 0.25 ? "visible" : "hidden",
                 }}
                 onClick={() => {
-                  setShowLovePopup(false); // closes the popup
+                  setShowLovePopup(false);
                 }}
               >
                 YES

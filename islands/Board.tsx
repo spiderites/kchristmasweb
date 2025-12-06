@@ -16,6 +16,10 @@ const noteContents = [
   "MAG-ADD PA AKO MORE DITO HEHEHEHE",
   "I WANT TO BE WITH U FOREVER",
   "I pray about you everytime",
+  "I love your smile",
+  "I love your NATURAL scent",
+  "You're beautiful in and out",
+  "You're so precious to me",
 ];
 
 export default function BulletinBoard() {

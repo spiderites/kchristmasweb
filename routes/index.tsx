@@ -88,7 +88,7 @@ export default define.page(function Home() {
   href="/special"
   class="bg-[#1DB954] text-black font-extrabold px-6 py-3 rounded-full block mx-auto mt-10 text-center hover:scale-105 transition"
 >
-  Open Something Special >
+  Something Special >>
 </a>
  { /* FOOTER */}
     <footer class="py-8 text-center text-gray-400 text-sm">

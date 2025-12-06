@@ -14,24 +14,19 @@ export default function Comments() {
   const [comments, setComments] = useState<Comment[]>([]);
   const [input, setInput] = useState("");
   const [name, setName] = useState("Kate");
+  const [showPasswordPopup, setShowPasswordPopup] = useState(false);
+  const [passwordInput, setPasswordInput] = useState("");
 
-  // Load comments once
   useEffect(() => {
     const loadComments = async () => {
       try {
         const res = await fetch(BIN_URL);
         if (res.ok) {
           const data = await res.json();
-          if (Array.isArray(data.comments)) {
-            setComments(data.comments);
-          } else {
-            setComments([]);
-          }
-        } else {
-          console.error("Failed to fetch comments:", res.status);
+          if (Array.isArray(data.comments)) setComments(data.comments);
         }
       } catch (err) {
-        console.error("Error fetching comments:", err);
+        console.error(err);
       }
     };
     loadComments();
@@ -39,6 +34,14 @@ export default function Comments() {
 
   const handleSubmit = async (e: Event) => {
     e.preventDefault();
+    if (name === "Kate") {
+      setShowPasswordPopup(true);
+      return;
+    }
+    await submitComment();
+  };
+
+  const submitComment = async () => {
     if (!input.trim()) return;
 
     const newComment: Comment = {
@@ -47,20 +50,29 @@ export default function Comments() {
       timestamp: new Date().toISOString(),
     };
 
-    // Update UI immediately
-    setComments((prev) => [...prev, newComment]);
+    const updatedComments = [...comments, newComment];
+    setComments(updatedComments);
     setInput("");
 
     try {
-      // PATCH: append new comment without overwriting existing ones
-      const res = await fetch(`${BIN_URL}?apiKey=${API_KEY}`, {
-        method: "PATCH",
+      await fetch(`${BIN_URL}?apiKey=${API_KEY}`, {
+        method: "PUT",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ comments: [newComment] }),
+        body: JSON.stringify({ comments: updatedComments }),
       });
-      if (!res.ok) console.error("Failed to patch JSON:", res.status);
     } catch (err) {
-      console.error("Error patching JSON:", err);
+      console.error(err);
+    }
+  };
+
+  const handlePasswordSubmit = (e: Event) => {
+    e.preventDefault();
+    if (passwordInput === "CKP123") {
+      setShowPasswordPopup(false);
+      setPasswordInput("");
+      submitComment();
+    } else {
+      alert("Wrong password! You are NOT my princess 😡😡");
     }
   };
 
@@ -71,16 +83,16 @@ export default function Comments() {
       </h2>
 
       <div class="flex flex-col gap-3 mb-4 h-[50vh] overflow-y-auto">
-  {comments.map((c, i) => (
-    <div
-      key={i}
-      class="bg-white text-black rounded-xl p-3 max-w-[80%] self-start shadow-md"
-    >
-      <p class="font-semibold">{c.name}:</p>
-      <p>{c.text}</p>
-    </div>
-  ))}
-</div>
+        {comments.map((c, i) => (
+          <div
+            key={i}
+            class="bg-white text-black rounded-xl p-3 max-w-[80%] self-start shadow-md"
+          >
+            <p class="font-semibold">{c.name}:</p>
+            <p>{c.text}</p>
+          </div>
+        ))}
+      </div>
 
       <form onSubmit={handleSubmit} class="flex flex-col gap-3">
         <select
@@ -99,6 +111,7 @@ export default function Comments() {
           onInput={(e: any) => setInput(e.target.value)}
           class="px-3 py-2 rounded-lg outline-none border border-gray-200"
         />
+
         <button
           type="submit"
           class="bg-white text-black font-bold py-2 rounded-lg hover:bg-gray-100 transition"
@@ -106,6 +119,44 @@ export default function Comments() {
           Send 💌
         </button>
       </form>
+
+      {showPasswordPopup && (
+        <div class="fixed inset-0 bg-black/60 flex items-center justify-center z-50">
+          <form
+            onSubmit={handlePasswordSubmit}
+            class="bg-gray-800 p-6 rounded-2xl shadow-xl flex flex-col gap-4 text-white w-72 relative"
+          >
+            <h2 class="text-xl font-bold">WAIT! Are you my princess?? 🤨🤨</h2>
+
+            <input
+              type="password"
+              value={passwordInput}
+              onInput={(e: any) => setPasswordInput(e.target.value)}
+              placeholder="Password"
+              class="p-2 rounded-lg bg-gray-700 outline-none"
+            />
+
+            <div class="flex justify-between gap-2">
+              <button
+                type="submit"
+                class="p-2 bg-green-500 rounded-lg font-bold flex-1 hover:bg-green-600 transition"
+              >
+                Submit
+              </button>
+              <button
+                type="button"
+                class="p-2 bg-red-500 rounded-lg font-bold flex-1 hover:bg-red-600 transition"
+                onClick={() => {
+                  setShowPasswordPopup(false);
+                  setPasswordInput("");
+                }}
+              >
+                Exit
+              </button>
+            </div>
+          </form>
+        </div>
+      )}
     </div>
   );
 }

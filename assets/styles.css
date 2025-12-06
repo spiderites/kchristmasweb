@@ -1,5 +1,135 @@
 @import "tailwindcss";
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100..900&display=swap');
+
+/* HERO TITLE */
+.roboto-flex-hero {
+  font-family: "Roboto Flex", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;
+  font-variation-settings:
+    "slnt" -4,
+    "wdth" 120,
+    "GRAD" 0,
+    "XOPQ" 150,
+    "XTRA" 120,
+    "YOPQ" 50,
+    "YTAS" 750,
+    "YTDE" -203,
+    "YTFI" 738,
+    "YTLC" 514,
+    "YTUC" 712;
+}
+
+.sticker {
+  position: absolute;
+  width: 80px;
+  height: auto;
+  user-select: none;
+  pointer-events: none; /* SUPER IMPORTANT */
+  z-index: 50;
+  animation: floaty 3s ease-in-out infinite;
+}
+
+@keyframes floaty {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+  100% { transform: translateY(0); }
+}
+
+@keyframes slideIn {
+  0% { transform: translateY(20px); opacity: 0; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+
+.animate-slide-in {
+  animation: slideIn 0.5s ease forwards;
+}
+
+/* slide + fade animation */
+.flash-enter {
+  @apply opacity-0 translate-y-4;
+}
+
+.flash-enter-active {
+  @apply opacity-100 translate-y-0 transition-all duration-500;
+}
+
+.flash-exit {
+  @apply opacity-100 translate-y-0;
+}
+
+.flash-exit-active {
+  @apply opacity-0 -translate-y-4 transition-all duration-500;
+}
+
+/* LETTERS SECTION TITLE */
+.roboto-flex-letters {
+  font-family: "Roboto Flex", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 950;
+  font-style: normal;
+  font-variation-settings:
+    "slnt" 0,
+    "wdth" 200,
+    "GRAD" 0,
+    "XOPQ" 140,
+    "XTRA" 110,
+    "YOPQ" 50,
+    "YTAS" 750,
+    "YTDE" -203,
+    "YTFI" 738,
+    "YTLC" 514,
+    "YTUC" 712;
+}
+
+/* GALLERY TITLE */
+.roboto-flex-gallery {
+  font-family: "Roboto Flex", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 950;
+  font-style: normal;
+  font-variation-settings:
+    "slnt" 0,
+    "wdth" 120,
+    "GRAD" 0,
+    "XOPQ" 145,
+    "XTRA" 115,
+    "YOPQ" 50,
+    "YTAS" 750,
+    "YTDE" -203,
+    "YTFI" 738,
+    "YTLC" 514,
+    "YTUC" 712;
+}
+
+/* SONGS TITLE */
+.roboto-flex-songs {
+  font-family: "Roboto Flex", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 800;
+  font-style: normal;
+  font-variation-settings:
+    "slnt" 0,
+    "wdth" 110,
+    "GRAD" 0,
+    "XOPQ" 135,
+    "XTRA" 110,
+    "YOPQ" 50,
+    "YTAS" 750,
+    "YTDE" -203,
+    "YTFI" 738,
+    "YTLC" 514,
+    "YTUC" 712;
+}
+
+.qsfont {
+  font-family: "Quicksand", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+
+
 .fresh-gradient {
   background-color: rgb(134, 239, 172);
   background-image: linear-gradient(

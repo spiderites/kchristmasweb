@@ -3,12 +3,12 @@ import { useState, useEffect } from "preact/hooks";
 const themes = [
   { name: "Default", value: "default" },
   { name: "Green + Black", value: "green-black" },
-  { name: "Light Sky Blue", value: "sky-blue" },
-  { name: "Black + Red & Green", value: "black-red-green" },
- { name: "Sunset Glow", value: "sunset-glow" },
+//  { name: "Light Sky Blue", value: "sky-blue" },
+ // { name: "Black + Red & Green", value: "black-red-green" },
+// { name: "Sunset Glow", value: "sunset-glow" },
   { name: "Midnight Purple", value: "midnight-purple" },
   { name: "Candy Pastel", value: "candy-pastel" }, 
-  { name: "Fire & Ice", value: "fire-ice" },
+//  { name: "Fire & Ice", value: "fire-ice" },
 ];
 
 export default function Themes() {

@@ -3,8 +3,8 @@ import { useState, useEffect } from "preact/hooks";
 const colors = ["#fef68a", "#ffadad", "#caffbf", "#9bf6ff", "#ffd6a5"];
 
 const noteContents = [
-  "Mahal Kita",
-  "I love you",
+  "Mahal Kita ❤️",
+  "I love you 💗",
   "I love your heart for Jesus",
   "I love your voice",
   "Ganda kaya boses mo sa vid na yun",
@@ -16,6 +16,11 @@ const noteContents = [
   "MAG-ADD PA AKO MORE DITO HEHEHEHE",
   "I WANT TO BE WITH U FOREVER",
   "I pray about you everytime",
+  "I love your smile",
+  "I love your NATURAL scent",
+  "You're beautiful in and out",
+  "You're so precious to me",
+  "Diba sabi ko kulayan ko buhay mo ng red❤️❤️",
 ];
 
 export default function BulletinBoard() {

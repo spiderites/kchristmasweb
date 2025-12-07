@@ -72,86 +72,125 @@ export default function Comments() {
       setPasswordInput("");
       submitComment();
     } else {
-      alert("Wrong password! You are NOT my princess 😡😡");
+      alert("You are NOT my princess😭🙏");
     }
   };
 
   return (
-    <div class="bg-sky-300 p-6 rounded-xl max-w-2xl mx-auto shadow-lg">
-      <h2 class="text-2xl font-bold mb-4 text-white text-center drop-shadow-md">
-        Share a cute message 💌
+    <div class="max-w-3xl mx-auto px-6 py-16">
+
+      {/* TITLE */}
+      <h2
+        class="text-4xl font-extrabold text-center mb-10 clip-text drop-shadow-[0_0_20px_rgba(255,0,0,0.4)]"
+        style={{ backgroundImage: "linear-gradient(to bottom, var(--accent), var(--accent2, var(--accent)))" }}
+      >
+        Message Wall 💬
       </h2>
 
-      <div class="flex flex-col gap-3 mb-4 h-[50vh] overflow-y-auto">
-        {comments.map((c, i) => (
-          <div
-            key={i}
-            class="bg-white text-black rounded-xl p-3 max-w-[80%] self-start shadow-md"
+      {/* COMMENTS BOX */}
+      <div
+        class="bg-[var(--bg)]/50 backdrop-blur-xl border border-[var(--accent)]/20 
+        rounded-2xl p-6 shadow-[0_0_25px_rgba(255,0,0,0.2)]"
+      >
+        <p class="text-[var(--text)]/70 text-center mb-6 text-sm">
+          Leave me a message sweetheart
+        </p>
+
+        <div class="flex flex-col gap-4 mb-8 h-[45vh] overflow-y-auto pr-2">
+          {comments.map((c, i) => (
+            <div
+              key={i}
+              class="bg-[var(--bg)]/40 border border-[var(--accent)]/30 p-4 rounded-xl 
+              shadow-[0_0_10px_rgba(255,0,0,0.15)] max-w-[80%]"
+            >
+              <p class="font-bold text-[var(--accent)]">{c.name}</p>
+              <p class="text-[var(--text)]">{c.text}</p>
+              <p class="text-[10px] text-[var(--text)]/50 mt-1">
+                {new Date(c.timestamp).toLocaleString()}
+              </p>
+            </div>
+          ))}
+        </div>
+
+        {/* FORM */}
+        <form onSubmit={handleSubmit} class="flex flex-col gap-4">
+
+          <select
+            value={name}
+            onChange={(e: any) => setName(e.target.value)}
+            class="px-3 py-2 rounded-lg bg-[var(--bg)]/50 border border-[var(--accent)]/30 
+            text-[var(--text)] outline-none"
           >
-            <p class="font-semibold">{c.name}:</p>
-            <p>{c.text}</p>
-          </div>
-        ))}
+            <option value="Kate">Kate</option>
+            <option value="Anonymous">Anonymous</option>
+          </select>
+
+          <input
+            type="text"
+            placeholder="Write something sweet..."
+            value={input}
+            onInput={(e: any) => setInput(e.target.value)}
+            class="px-3 py-2 rounded-lg bg-[var(--bg)]/50 border border-[var(--accent)]/30 
+            text-[var(--text)] outline-none"
+          />
+
+          <button
+            type="submit"
+            class="bg-[var(--accent)] text-[var(--text)] font-bold py-2 rounded-lg 
+            hover:brightness-110 hover:scale-[1.03] transition-all
+            shadow-[0_0_15px_rgba(255,0,0,0.5)]"
+          >
+            Send ❤️
+          </button>
+
+        </form>
       </div>
 
-      <form onSubmit={handleSubmit} class="flex flex-col gap-3">
-        <select
-          value={name}
-          onChange={(e: any) => setName(e.target.value)}
-          class="px-3 py-2 rounded-lg outline-none border border-gray-200"
-        >
-          <option value="Kate">Kate</option>
-          <option value="Anonymous">Anonymous</option>
-        </select>
 
-        <input
-          type="text"
-          placeholder="Write your message..."
-          value={input}
-          onInput={(e: any) => setInput(e.target.value)}
-          class="px-3 py-2 rounded-lg outline-none border border-gray-200"
-        />
-
-        <button
-          type="submit"
-          class="bg-white text-black font-bold py-2 rounded-lg hover:bg-gray-100 transition"
-        >
-          Send 💌
-        </button>
-      </form>
-
+      {/* PASSWORD POPUP */}
       {showPasswordPopup && (
-        <div class="fixed inset-0 bg-black/60 flex items-center justify-center z-50">
+        <div class="fixed inset-0 bg-[var(--bg)]/70 flex items-center justify-center z-50">
           <form
             onSubmit={handlePasswordSubmit}
-            class="bg-gray-800 p-6 rounded-2xl shadow-xl flex flex-col gap-4 text-white w-72 relative"
+            class="bg-[var(--bg)]/80 border border-[var(--accent)]/40 p-6 rounded-2xl backdrop-blur-xl 
+            shadow-[0_0_25px_rgba(255,0,0,0.4)] flex flex-col gap-4 text-[var(--text)] w-72"
           >
-            <h2 class="text-xl font-bold">WAIT! Are you my princess?? 🤨🤨</h2>
+            <h2
+              class="text-xl font-bold clip-text"
+              style={{ backgroundImage: "linear-gradient(to bottom, var(--accent), var(--accent2, var(--accent)))" }}
+            >
+              WAIT! Are you my princess?? 🤨🤨
+            </h2>
+
+            <p class="text-sm text-[var(--text)]/70">
+              Just making sure...
+            </p>
 
             <input
               type="password"
               value={passwordInput}
               onInput={(e: any) => setPasswordInput(e.target.value)}
               placeholder="Password"
-              class="p-2 rounded-lg bg-gray-700 outline-none"
+              class="p-2 rounded-lg bg-[var(--bg)]/50 border border-[var(--accent)]/30 outline-none text-[var(--text)]"
             />
 
             <div class="flex justify-between gap-2">
               <button
                 type="submit"
-                class="p-2 bg-green-500 rounded-lg font-bold flex-1 hover:bg-green-600 transition"
+                class="p-2 bg-[var(--accent)] rounded-lg font-bold hover:brightness-110 
+                transition shadow-[0_0_10px_rgba(255,0,0,0.4)] text-[var(--text)]"
               >
-                Submit
+                Confirm
               </button>
               <button
                 type="button"
-                class="p-2 bg-red-500 rounded-lg font-bold flex-1 hover:bg-red-600 transition"
+                class="p-2 bg-[var(--text)]/20 rounded-lg font-bold hover:brightness-90 transition"
                 onClick={() => {
                   setShowPasswordPopup(false);
                   setPasswordInput("");
                 }}
               >
-                Exit
+                Cancel
               </button>
             </div>
           </form>

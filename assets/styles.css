@@ -20,6 +20,62 @@
     "YTUC" 712;
 }
 
+:root[data-theme="default"] {
+  --bg: #050505;
+  --text: #ffffff;
+  --accent: #ff0000;
+  --accent2: #9e0e0e; /* top-to-bottom gradient for headers */
+}
+
+:root[data-theme="green-black"] {
+  --bg: #000000;
+  --text: #00ff00;
+  --accent: #00ff00;
+  --accent2: #12c438;
+}
+
+:root[data-theme="sky-blue"] {
+  --bg: #e0f7ff;
+  --text: #03396c;
+  --accent: #0077b6;
+  --accent2: #0096ff;
+}
+
+:root[data-theme="sunset-glow"] {
+  --bg: #ffecd2;
+  --text: #ff4e50;
+  --accent: #fc913a;
+  --accent2: #ff6f61;
+}
+
+:root[data-theme="midnight-purple"] {
+  --bg: #1a0033;
+  --text: #d4bfff;
+  --accent: #9b59b6;
+  --accent2: #6a0dad;
+}
+
+:root[data-theme="candy-pastel"] {
+  --bg: #fff0f5;
+  --text: #ff69b4;
+  --accent: #ffb6c1;
+  --accent2: #ffa6c9;
+}
+
+:root[data-theme="black-red-green"] {
+  --bg: #000000;
+  --text: #ffffff;
+  --accent: #ff0000;
+  --accent2: #12c438;
+}
+
+:root[data-theme="fire-ice"] {
+  --bg: #0a0a0a;
+  --text: #ffffff;
+  --accent: #ff4500;
+  --accent2: #00ffff;
+}
+
 .sticker {
   position: absolute;
   width: 80px;
